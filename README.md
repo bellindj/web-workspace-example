@@ -1,15 +1,36 @@
 # Base11
 ## Steps to create this:
-1. npx create-nx-workspace --preset=react
+1. `npx create-nx-workspace --preset=react`
 2. Install NX globally (`yarn global add nx` or `npm install -g nx`)
 3. Create example libs:
-    - npx nx g @nrwl/react:lib shared-components
-    - npx nx g @nrwl/react:lib app-domain-1
-    - npx nx g @nrwl/react:lib app-domain-2
+    - `npx nx g @nrwl/react:lib shared-components`
+    - `npx nx g @nrwl/react:lib app-domain-1`
+    - `npx nx g @nrwl/react:lib app-domain-2`
 4. Create example components
-    - npx nx g @nrwl/react:component button --project=shared-components --export
-    - npx nx g @nrwl/react:component app-specific-widget-1 --project=app-domain-1 --export
-    - npx nx g @nrwl/react:component app-specific-widget-2 --project=app-domain-2 --export
+    - `npx nx g @nrwl/react:component button --project=shared-components --export`
+    - `npx nx g @nrwl/react:component app-specific-widget-1 --project=app-domain-1 --export`
+    - `npx nx g @nrwl/react:component app-specific-widget-2 --project=app-domain-2 --export`
+5. Add storybook for component library
+    - `yarn add --dev @nrwl/storybook`
+    - `nx g @nrwl/react:storybook-configuration shared-components`
+
+## What is this?
+
+This is an NX workspace monorepo that can contain many web apps with some shared code and some domain specific code. Web apps can be React, Vue, Angular, etc.
+
+## What is here?
+
+1. A react app: my-react-app
+2. Multiple libs:
+  - shared-components: this is a shared lib meant to be used by multiple apps. This will contain generic components
+  - app-domain-1: this is an app-specific lib which will likely only ever be used by 1 app. Pieces could be broken off of it in the future if it ever needs to be shared further.
+  - app-domain-2: this is another app-specific lib which will likely only ever be used by 1 app. Pieces could be broken off of it in the future if it ever needs to be shared further.
+3. A storybook instance for the shraed-component library to document the components there. Notice that the button component at libs/shared-components/src/lib/button has a button.stories.tsx file. This is the storybook documentation and each component will just get its own .stories.tsx file with all the iterations of the component.
+
+## How to use?
+
+NX is a CLI tool with lots of command to generate new libs, apps, components, etc. Use the CLI to generate new pieces to make it as easy as possible to automate all the configuration.
+
 
 ## How to migrate an existing app to this workspace?
 
@@ -23,9 +44,13 @@
 ## Commands
 
 1. Run react app: `nx serve my-react-app`
-2. Test react app: `nx test my-react-app`
-3. Build react app `nx build my-react-app`
-4. Use affected commands to avoid re-test/re-build of certain libs/apps that don't change: `yarn run affected:test`, `yarn run affected:build`, etc - see package.json for all commands.
+2. Run storybook (component library documentation): `nx run shared-components:storybook`
+
+## Other commands
+
+1. Test react app: `nx test my-react-app`
+2. Build react app `nx build my-react-app`
+3. Use affected commands to avoid re-test/re-build of certain libs/apps that don't change: `yarn run affected:test`, `yarn run affected:build`, etc - see package.json for all commands.
 
 
 
