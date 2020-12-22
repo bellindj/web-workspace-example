@@ -1,10 +1,31 @@
 # Base11
 ## Steps to create this:
 1. npx create-nx-workspace --preset=react
+2. Install NX globally (`yarn global add nx` or `npm install -g nx`)
+3. Create example libs:
+    - npx nx g @nrwl/react:lib shared-components
+    - npx nx g @nrwl/react:lib app-domain-1
+    - npx nx g @nrwl/react:lib app-domain-2
+4. Create example components
+    - npx nx g @nrwl/react:component button --project=shared-components --export
+    - npx nx g @nrwl/react:component app-specific-widget-1 --project=app-domain-1 --export
+    - npx nx g @nrwl/react:component app-specific-widget-2 --project=app-domain-2 --export
+
+## How to migrate an existing app to this workspace?
+
+1. Step 1 - move entire React app into my-react-app & make sure it runs
+2. Step 2 - start to split out components & pieces into separate libs, domain specific libs & shared libs
+3. Step 3 - eventually, contents of app (my-react-app) should be widdled down to app config & routes (i.e. react-router routes in app.tsx that pull in all the components/pages from other libs and that's it)
+
+- In the end, apps will be simple app configuration + routes, libs will be both shared component libs (meant for any app if you were to have 2 or more apps in this repo), and domain specific libs that are likely only specific to an app. The app specific components still go into libs to segment out your app and leverage nx's affected commands to only build/test what is changed rather than re-build & re-test entire app every time something changes.
 
 
+## Commands
 
-
+1. Run react app: `nx serve my-react-app`
+2. Test react app: `nx test my-react-app`
+3. Build react app `nx build my-react-app`
+4. Use affected commands to avoid re-test/re-build of certain libs/apps that don't change: `yarn run affected:test`
 
 
 

@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@base11/shared-components": ["libs/shared-components/src/index.ts"],
+      "@base11/app-domain-1": ["libs/app-domain-1/src/index.ts"],
+      "@base11/app-domain-2": ["libs/app-domain-2/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

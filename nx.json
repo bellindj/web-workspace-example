@@ -1,7 +1,7 @@
 {
   "npmScope": "base11",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "main"
   },
   "implicitDependencies": {
     "workspace.json": "*",
@@ -29,6 +29,15 @@
     "my-react-app-e2e": {
       "tags": [],
       "implicitDependencies": ["my-react-app"]
+    },
+    "shared-components": {
+      "tags": []
+    },
+    "app-domain-1": {
+      "tags": []
+    },
+    "app-domain-2": {
+      "tags": []
     }
   }
 }
