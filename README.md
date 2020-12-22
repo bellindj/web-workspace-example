@@ -31,6 +31,10 @@ This is an NX workspace monorepo that can contain many web apps with some shared
 
 NX is a CLI tool with lots of command to generate new libs, apps, components, etc. Use the CLI to generate new pieces to make it as easy as possible to automate all the configuration.
 
+## Quick Commands
+
+1. Run react app: `nx serve my-react-app`
+2. Run storybook (component library documentation): `nx run shared-components:storybook`
 
 ## How to migrate an existing app to this workspace?
 
@@ -39,12 +43,6 @@ NX is a CLI tool with lots of command to generate new libs, apps, components, et
 3. Step 3 - eventually, contents of app (my-react-app) should be widdled down to app config & routes (i.e. react-router routes in app.tsx that pull in all the components/pages from other libs and that's it)
 
 - In the end, apps will be simple app configuration + routes, libs will be both shared component libs (meant for any app if you were to have 2 or more apps in this repo), and domain specific libs that are likely only specific to an app. The app specific components still go into libs to segment out your app and leverage nx's affected commands to only build/test what is changed rather than re-build & re-test entire app every time something changes.
-
-
-## Commands
-
-1. Run react app: `nx serve my-react-app`
-2. Run storybook (component library documentation): `nx run shared-components:storybook`
 
 ## Other commands
 
