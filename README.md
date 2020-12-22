@@ -1,4 +1,4 @@
-# Base11
+# Example NX Workspace with React App, Component Library, Storybook Docs
 ## Steps to create this:
 1. `npx create-nx-workspace --preset=react`
 2. Install NX globally (`yarn global add nx` or `npm install -g nx`)
