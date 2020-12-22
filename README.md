@@ -25,7 +25,7 @@
 1. Run react app: `nx serve my-react-app`
 2. Test react app: `nx test my-react-app`
 3. Build react app `nx build my-react-app`
-4. Use affected commands to avoid re-test/re-build of certain libs/apps that don't change: `yarn run affected:test`
+4. Use affected commands to avoid re-test/re-build of certain libs/apps that don't change: `yarn run affected:test`, `yarn run affected:build`, etc - see package.json for all commands.
 
 
 
